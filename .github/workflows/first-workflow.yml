@@ -11,9 +11,6 @@ jobs:
   job2:
     runs-on: ubuntu-latest
 
-    step1:
+    steps:
       - name: Print Hello
-      - run: echo "Step 1"
-    step2:
-      - name: Print Hello
-      - run: echo "Step 2"
+      - run: echo "Hello from GitHub Actions"
