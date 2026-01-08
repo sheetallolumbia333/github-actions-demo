@@ -6,9 +6,14 @@ on:
       - main
 
 jobs:
-  demo-job:
+  job1:
+    runs-on: ubuntu-latest
+  job2:
     runs-on: ubuntu-latest
 
-    steps:
+    step1:
       - name: Print Hello
-        run: echo "Hello from GitHub Actions"
+      - run: echo "Step 1"
+    step2:
+      - name: Print Hello
+      - run: echo "Step 2"
