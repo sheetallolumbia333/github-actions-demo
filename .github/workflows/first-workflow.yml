@@ -8,9 +8,14 @@ on:
 jobs:
   job1:
     runs-on: ubuntu-latest
+  
+    steps:
+      - name: Print Hello1
+      - run: echo "Hello1 from GitHub Actions"
+
   job2:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print Hello
-      - run: echo "Hello from GitHub Actions"
+      - name: Print Hello2
+      - run: echo "Hello2 from GitHub Actions"
