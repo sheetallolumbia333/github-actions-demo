@@ -1,4 +1,4 @@
-name: Failure Demo
+name: Multi Job Pipeline
 
 on:
   push:
@@ -6,19 +6,25 @@ on:
       - main
 
 jobs:
-  failure-job:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Successful step
+      - name: Build step
         run: |
-          echo "This step succeeds"
+          echo "Building application"
 
-      - name: Intentional failure
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test step
         run: |
-          echo "Failing now"
-          exit 0
+          echo "Running tests"
 
-      - name: This will NOT run
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy step
         run: |
-          echo "You will never see this"
+          echo "Deploying application"
