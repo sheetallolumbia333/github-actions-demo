@@ -1,4 +1,4 @@
-name: Secrets Demo
+name: Failure Demo
 
 on:
   push:
@@ -6,13 +6,19 @@ on:
       - main
 
 jobs:
-  secret-job:
+  failure-job:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Use secret safely
+      - name: Successful step
         run: |
-          echo "Secret is available"
-          echo "Length of secret: ${#MY_SECRET}"
-        env:
-          MY_SECRET: ${{ secrets.MY_SECRET }}
+          echo "This step succeeds"
+
+      - name: Intentional failure
+        run: |
+          echo "Failing now"
+          exit 1
+
+      - name: This will NOT run
+        run: |
+          echo "You will never see this"
